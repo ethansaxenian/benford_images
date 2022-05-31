@@ -2,18 +2,24 @@
   "name": "benford_images",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ethansaxenian.github.io/benford_images/",
+  "license": "MIT",
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
     "recharts": "^2.1.10"
   },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-api": "pipenv run flask run"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

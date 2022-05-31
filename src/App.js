@@ -48,7 +48,7 @@ export default function App() {
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "center",
+            justifyContent: "space-evenly",
             alignItems: "center",
           }}
         >

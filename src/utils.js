@@ -24,33 +24,6 @@ export const getPixelValues = async (image) => {
   return pixels;
 };
 
-export const calculateFirstDigitFrequencies = (values) => {
-  const frequencies = {};
-  values.forEach((value) => {
-    const firstDigit = FSD(value);
-    if (firstDigit) {
-      if (frequencies[firstDigit]) {
-        frequencies[firstDigit]++;
-      } else {
-        frequencies[firstDigit] = 1;
-      }
-    }
-  });
-  const total = Object.values(frequencies).reduce((a, b) => a + b);
-  for (let i in frequencies) {
-    frequencies[i] = (frequencies[i] / total) * 100;
-  }
-  return frequencies;
-};
-
-const FSD = (num) => {
-  for (let c of num.toString()) {
-    if (c !== "." && c !== "0") {
-      return c;
-    }
-  }
-};
-
 // https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
 const sRGBConversion = (sRGB) => {
   if (sRGB <= 0.03928) {
@@ -66,6 +39,33 @@ export const luminance = ({ r, g, b }) => {
     0.7152 * sRGBConversion(g / 255) +
     0.0722 * sRGBConversion(b / 255)
   );
+};
+
+export const calculateFirstDigitFrequencies = (values) => {
+  const frequencies = {};
+  values.forEach((value) => {
+    const firstDigit = FSD(value);
+    if (firstDigit) {
+      if (frequencies[firstDigit]) {
+        frequencies[firstDigit]++;
+      } else {
+        frequencies[firstDigit] = 1;
+      }
+    }
+  });
+  const total = Object.values(frequencies).reduce((a, b) => a + b);
+  for (let i in frequencies) {
+    frequencies[i] = +((frequencies[i] / total) * 100).toFixed(2);
+  }
+  return frequencies;
+};
+
+const FSD = (num) => {
+  for (let c of num.toString()) {
+    if (c !== "." && c !== "0") {
+      return c;
+    }
+  }
 };
 
 export const BENFORD_VALUES = {
