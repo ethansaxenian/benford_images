@@ -10,6 +10,7 @@ export default function App() {
   const [frequencies, setFrequencies] = useState({});
 
   useEffect(() => {
+    console.log("pixels", pixels);
     if (pixels.length) {
       setFrequencies(calculateFirstDigitFrequencies(pixels));
     } else {
@@ -25,10 +26,13 @@ export default function App() {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
+        console.log("getting pixel values");
         setPixels(getPixelValues(reader.result));
       };
     }
   };
+
+  console.log(pixels, frequencies);
 
   return (
     <div
