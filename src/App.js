@@ -3,6 +3,7 @@ import { getPixelValues, calculateFirstDigitFrequencies } from "./utils";
 import ImagePicker from "./ImagePicker";
 import ChartDisplay from "./ChartDisplay";
 import ImageDisplay from "./ImageDisplay";
+import SourceCodeButton from "./SourceCodeButton";
 
 export default function App() {
   const [image, setImage] = useState();
@@ -10,7 +11,7 @@ export default function App() {
   const [frequencies, setFrequencies] = useState({});
 
   useEffect(() => {
-    console.log("pixels", pixels);
+    console.log("pixels", pixels.length);
     if (pixels.length) {
       setFrequencies(calculateFirstDigitFrequencies(pixels));
     } else {
@@ -32,7 +33,7 @@ export default function App() {
     }
   };
 
-  console.log(pixels, frequencies);
+  console.log(pixels.length, Object.keys(frequencies).length);
 
   return (
     <div
@@ -45,6 +46,7 @@ export default function App() {
         padding: 30,
       }}
     >
+      <SourceCodeButton />
       <ImagePicker chooseImage={chooseImage} />
       {image && (
         <div className="display-row">
