@@ -12,7 +12,7 @@ export default function ChartDisplay({ frequencies }) {
       }}
     >
       {Object.keys(frequencies).length === 0 ? (
-        <div>Loading pixel data...</div>
+        <p>Loading pixel data...</p>
       ) : (
         <Chart imageData={frequencies} />
       )}

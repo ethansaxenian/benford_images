@@ -12,7 +12,7 @@ import { BENFORD_VALUES } from "./utils";
 
 export default function Chart({ imageData }) {
   const data = Object.entries(imageData).map(([firstDigit, pct]) => ({
-    "First Digit": firstDigit,
+    "First Significant Digit": firstDigit,
     "Image Data": pct,
     "Benford's Law": BENFORD_VALUES[firstDigit],
   }));
@@ -31,9 +31,9 @@ export default function Chart({ imageData }) {
         }}
       >
         <XAxis
-          dataKey="First Digit"
+          dataKey="First Significant Digit"
           label={{
-            value: "First Digit",
+            value: "First Significant Digit",
             position: "insideBottom",
             offset: -20,
           }}

@@ -1,6 +1,6 @@
 export default function ImageDisplay({ image }) {
   return (
-    <div style={{ maxWidth: 500 }}>
+    <div style={{ width: "min(500px, 100%)" }}>
       <img src={image} />
     </div>
   );

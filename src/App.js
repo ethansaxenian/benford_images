@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getPixelValues, calculateFirstDigitFrequencies } from "./utils";
-import { flushSync } from "react-dom";
 import ImagePicker from "./ImagePicker";
 import ChartDisplay from "./ChartDisplay";
 import ImageDisplay from "./ImageDisplay";
@@ -22,13 +21,11 @@ export default function App() {
     setPixels([]);
     setImage();
     if (file) {
-      flushSync(() => {
-        setImage(URL.createObjectURL(file));
-      });
+      setImage(URL.createObjectURL(file));
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = async () => {
-        setPixels(await getPixelValues(reader.result));
+      reader.onload = () => {
+        setPixels(getPixelValues(reader.result));
       };
     }
   };
@@ -37,21 +34,16 @@ export default function App() {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        height: "100%",
+        flex: 1,
+        padding: 30,
       }}
     >
       <ImagePicker chooseImage={chooseImage} />
       {image && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
+        <div className="display-row">
           <ImageDisplay image={image} />
           <ChartDisplay frequencies={frequencies} />
         </div>
