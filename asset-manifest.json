@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/benford_images/static/css/main.d9766054.css",
-    "main.js": "/benford_images/static/js/main.3ca5c9d3.js",
+    "main.css": "/benford_images/static/css/main.e20ac652.css",
+    "main.js": "/benford_images/static/js/main.49cf063f.js",
     "index.html": "/benford_images/index.html",
-    "main.d9766054.css.map": "/benford_images/static/css/main.d9766054.css.map",
-    "main.3ca5c9d3.js.map": "/benford_images/static/js/main.3ca5c9d3.js.map"
+    "main.e20ac652.css.map": "/benford_images/static/css/main.e20ac652.css.map",
+    "main.49cf063f.js.map": "/benford_images/static/js/main.49cf063f.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9766054.css",
-    "static/js/main.3ca5c9d3.js"
+    "static/css/main.e20ac652.css",
+    "static/js/main.49cf063f.js"
   ]
 }

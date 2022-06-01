@@ -1,0 +1,2 @@
+*,:after,:before{box-sizing:border-box}*{margin:0}#root,body,html{height:100%}body{-webkit-font-smoothing:antialiased;line-height:1.5}img{display:block;max-width:100%}input{font:inherit}h1,h2,h3,h4,h5,h6,p{overflow-wrap:break-word}#root{isolation:isolate}.display-row{align-items:center;display:flex;flex-direction:row;justify-content:space-evenly}@media (max-width:800px){.display-row{flex-direction:column}}
+/*# sourceMappingURL=main.e20ac652.css.map*/
