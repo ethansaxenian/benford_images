@@ -1,15 +1,15 @@
-export const getPixelValues = (image) => {
+export const getPixelValues = (image, callback) => {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   const img = new Image();
-  img.src = image;
-  const pixels = [];
+
   img.onload = () => {
     canvas.width = img.width;
     canvas.height = img.height;
     ctx.drawImage(img, 0, 0);
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const data = imageData.data;
+    const pixels = [];
     for (let i = 0; i < data.length; i += 4) {
       const lum = luminance({
         r: data[i],
@@ -20,8 +20,11 @@ export const getPixelValues = (image) => {
         pixels.push(lum);
       }
     }
+    callback(pixels);
   };
-  return pixels;
+
+  // this will call img.onload
+  img.src = image;
 };
 
 // https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef

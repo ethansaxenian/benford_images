@@ -7,33 +7,25 @@ import SourceCodeButton from "./SourceCodeButton";
 
 export default function App() {
   const [image, setImage] = useState();
-  const [pixels, setPixels] = useState([]);
   const [frequencies, setFrequencies] = useState({});
 
-  useEffect(() => {
-    console.log("pixels", pixels.length);
-    if (pixels.length) {
-      setFrequencies(calculateFirstDigitFrequencies(pixels));
-    } else {
-      setFrequencies({});
-    }
-  }, [pixels]);
-
   const chooseImage = (file) => {
-    setPixels([]);
+    setFrequencies({});
     setImage();
     if (file) {
       setImage(URL.createObjectURL(file));
       const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        console.log("getting pixel values");
-        setPixels(getPixelValues(reader.result));
+
+      reader.onload = (e) => {
+        getPixelValues(e.target.result, (pixels) =>
+          setFrequencies(calculateFirstDigitFrequencies(pixels))
+        );
       };
+
+      // this calls reader.onload
+      reader.readAsDataURL(file);
     }
   };
-
-  console.log(pixels.length, Object.keys(frequencies).length);
 
   return (
     <div
